@@ -1,0 +1,15 @@
+{
+    "go.buildOnSave": true,
+    "go.lintOnSave": true,
+    "go.vetOnSave": true,
+    "go.buildFlags": [],
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.coverOnSave": false,
+    "go.useCodeSnippetsOnFunctionSuggest": false,
+    "go.formatOnSave": true,
+    //goimports
+    "go.formatTool": "goreturns",
+    "go.goroot": "c:\\Go",//你的Goroot
+    "go.gopath": "D:\\GoProjects\\GoProjects",//你的Gopath
+}
