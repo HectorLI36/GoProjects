@@ -10,18 +10,18 @@ import (
 // 	fmt.Println(s)
 // }
 
-func callProxy(url string)  {
+func callProxy(url string) {
 	time.Sleep(time.Duration(1) * time.Second)
 	fmt.Println("dummy calling")
 }
 
-func callPostRequest(urlChan chan string, quit chan int)  {
-	
+func callPostRequest(urlChan chan string, quit chan int) {
+
 	time.Sleep(time.Duration(1) * time.Second)
 	for {
 		select {
-		case url := <- urlChan:
-			
+		case url := <-urlChan:
+
 			callProxy(url)
 			fmt.Println("----------------------------------------------------------------------Calling ", url)
 		case <-quit:
@@ -31,15 +31,14 @@ func callPostRequest(urlChan chan string, quit chan int)  {
 	}
 }
 
+func oneDayArranger(interval int, dateChan chan string, myquit chan int) {
 
-func oneDayArranger(interval int, dateChan chan string, myquit chan int)  {
-	
 	urlList := [3]string{"url1", "url2", "url3"} // ToDo: dynamically set the url list
 	for {
 		select {
-		case date := <- dateChan:
+		case date := <-dateChan:
 			fmt.Println("oneDayArranger started! for date ", date)
-			
+
 			go func() {
 				urlChan := make(chan string)
 				quit := make(chan int)
@@ -47,20 +46,20 @@ func oneDayArranger(interval int, dateChan chan string, myquit chan int)  {
 				for _, oneUrl := range urlList {
 					onePostURL := oneUrl + "date" + date
 					urlChan <- onePostURL
-					fmt.Println("ODA: sending %s", onePostURL)
+					fmt.Printf("ODA: sending %s\n", onePostURL)
 					time.Sleep(time.Duration(1) * time.Second)
 				}
 				quit <- 1
 			}()
-			
-		case <- myquit:
+
+		case <-myquit:
 			fmt.Println("finish oneDayArranger")
 		}
 	}
 
 }
 
-func timer(interval int)  {
+func timer(interval int) {
 	fmt.Println("Timer started!")
 	// time.Sleep(time.Duration(interval) * time.Second)
 	date := make(chan string)
@@ -73,12 +72,10 @@ func timer(interval int)  {
 		fmt.Println("Timer sended ", v)
 		time.Sleep(time.Duration(interval) * time.Second)
 	}
-	quit <-1
+	quit <- 1
 	fmt.Println("all finished!")
-	
+
 }
-
-
 
 func Run(interval int) {
 	fmt.Println("triggering started!")
