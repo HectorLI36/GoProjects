@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 import "strconv"
 
 func getDateList() []string {
@@ -9,7 +11,7 @@ func getDateList() []string {
 	for i := 1; i <= 9; i++ {
 		dateList = append(dateList, fmt.Sprintf(baseDate, "0"+strconv.Itoa(i)))
 	}
-	for i := 10; i <= 22; i++ {
+	for i := 10; i <= 24; i++ {
 		dateList = append(dateList, fmt.Sprintf(baseDate, strconv.Itoa(i)))
 	}
 	return dateList
@@ -17,7 +19,11 @@ func getDateList() []string {
 
 func main() {
 	fmt.Println("I am main")
-	//riderTrigger.Run(5)
-	a := getDateList()
+	////riderTrigger.Run(5)
+	//a := getDateList()
+	//print(a)
+	//riderTrigger.RiderPrint("hello!")
+	a := fmt.Sprintf("https://rider.perflab.nvidia.com/api/pipeline/rider/%s/normalizer", "2020-05-09")
 	print(a)
+	//riderTrigger.CallProxy("http://127.0.0.1:8000/I-am-go")
 }
