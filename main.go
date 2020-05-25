@@ -23,7 +23,6 @@ func main() {
 	//a := getDateList()
 	//print(a)
 	//riderTrigger.RiderPrint("hello!")
-	a := fmt.Sprintf("https://rider.perflab.nvidia.com/api/pipeline/rider/%s/normalizer", "2020-05-09")
 	print(a)
 	//riderTrigger.CallProxy("http://127.0.0.1:8000/I-am-go")
 }

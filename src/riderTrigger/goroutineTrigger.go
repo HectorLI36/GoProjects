@@ -63,7 +63,11 @@ func getDateList() []string {
 }
 
 func oneDayArranger(interval int, dateChan chan string, myquit chan int) {
-
+	//
+	//urlList := [4]string{"https://rider.perflab.nvidia.com/api/pipeline/xiashuo/%s/normalizer",
+	//	"https://rider.perflab.nvidia.com/api/pipeline/3dm/%s/normalizer",
+	//	"https://rider.perflab.nvidia.com/api/pipeline/youxia/%s/normalizer",
+	//	"https://rider.perflab.nvidia.com/api/pipeline/rider/%s/normalizer"} // ToDo: dynamically set the url list
 	for {
 		select {
 		case date := <-dateChan:
